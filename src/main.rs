@@ -1,5 +1,15 @@
 use std::mem;
 fn main() {
+    println!("inside main function");
+    // data types
+   // data_types();
+
+    // operators
+    operator();
+
+}
+
+fn data_types() {
     let a = 123;
     println!("a = {}",a);
 
@@ -28,6 +38,37 @@ fn main() {
     let f = false;
     println!("value of f is {} and size of f is {} bytes",f, mem::size_of_val(&f));
 
-
-
 }
+
+fn operator() {
+    let mut a = 2+3*4; // + - * % / 
+    println!("{}",a);
+    a = a+1; // inc and dec -- ++ operator is not supported
+    a -= 2; // -= += *= /= %=
+
+    println!("remainder of {}/{} = {}",a,3,(a%3));
+
+    let a_cube = i32::pow(a,3);
+    println!("{} cubed is {}",a,a_cube);
+
+    let b = 2.5;
+    let b_to_cube = f64::powi(b,3);
+    let b_to_pi = f64::powf(b, std::f64::consts::PI);
+
+    println!("{} cubed = {}, {}^pi = {}", b,b_to_cube,b, b_to_pi);
+
+    // bitwise
+    // bitwise is only available for 
+    let c = 1|2; // | or , & and, ^ xor, !nor
+    println!("1|2 = {}", c);
+    let two_to_ten  = 1 << 10; //>> right/left shift
+    println!("2^10 is {}",two_to_ten);
+
+    // logical
+    let pi_less_4 = std::f64::consts::PI < 4.0;
+    // > < <= >=
+    println!("Pi is less than 4, its {}", pi_less_4);
+    
+    
+}
+
