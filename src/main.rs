@@ -5,7 +5,10 @@ fn main() {
    // data_types();
 
     // operators
-    operator();
+  //  operator();
+
+  // scope and shadowing concepts
+  scope_and_shadowing();
 
 }
 
@@ -70,5 +73,28 @@ fn operator() {
     println!("Pi is less than 4, its {}", pi_less_4);
     
     
+}
+
+fn scope_and_shadowing() {
+    let a = 123;
+
+    //let a = 111; 
+    //this declaration of 'a' variable will not raise any error
+    // but it will re declare the a variable again with this new value
+
+    
+    {
+        let b = 456;
+        println!("inside b  = {}", b);
+
+        // this inner declaration of a will overshadow the outer declaration
+        // of a inside this inner declaration
+        let a = 777;
+        println!("inside a = {}",a);
+
+    }
+
+    // whenever we open a "{" it creates a scope
+    println!("outside a = {}", a);
 }
 
