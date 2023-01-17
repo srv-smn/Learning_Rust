@@ -1,4 +1,14 @@
 use std::mem;
+
+// global variable and constants
+const MEANING_OF_LIFE: u8 = 42; // it does not have a fixed address, every where
+                            // this variable used will be replaced by the value of 
+                            // at compilation level
+static x: i32 =123; // this can be used anywhere in the program, since it is declared outside of any scope
+
+static mut z0:i32 = 234;
+// this is mutable global variable 
+
 fn main() {
     println!("inside main function");
     // data types
@@ -8,7 +18,25 @@ fn main() {
   //  operator();
 
   // scope and shadowing concepts
-  scope_and_shadowing();
+ // scope_and_shadowing();
+
+ // global and constants
+
+ println!("Meaning of Life {}", MEANING_OF_LIFE);
+ println!("global variable x {}", x);
+
+ unsafe{
+    /*
+    since z is global variable and it is mutable,
+    so it can be modified by different thread and different places
+    which rust try to avoid.
+    So to use 'z0' we will have to use it in a unsafe block,
+    to let the compiler know that you know that you are doing some 
+    unsafe operation
+    */
+    z0 = 789;
+    println!("value of z0 {}",z0);
+ }
 
 }
 
