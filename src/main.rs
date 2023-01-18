@@ -1,4 +1,7 @@
+#![allow(dead_code)]
+#![allow(unused_variables)]
 use std::mem;
+mod sh;
 
 // global variable and constants
 const MEANING_OF_LIFE: u8 = 42; // it does not have a fixed address, every where
@@ -22,22 +25,23 @@ fn main() {
 
  // global and constants
 
- println!("Meaning of Life {}", MEANING_OF_LIFE);
- println!("global variable x {}", x);
+//  println!("Meaning of Life {}", MEANING_OF_LIFE);
+//  println!("global variable x {}", x);
 
- unsafe{
-    /*
-    since z is global variable and it is mutable,
-    so it can be modified by different thread and different places
-    which rust try to avoid.
-    So to use 'z0' we will have to use it in a unsafe block,
-    to let the compiler know that you know that you are doing some 
-    unsafe operation
-    */
-    z0 = 789;
-    println!("value of z0 {}",z0);
- }
+//  unsafe{
+//     /*
+//     since z is global variable and it is mutable,
+//     so it can be modified by different thread and different places
+//     which rust try to avoid.
+//     So to use 'z0' we will have to use it in a unsafe block,
+//     to let the compiler know that you know that you are doing some 
+//     unsafe operation
+//     */
+//     z0 = 789;
+//     println!("value of z0 {}",z0);
+//  }
 
+sh::stack_and_heap();
 }
 
 fn data_types() {
