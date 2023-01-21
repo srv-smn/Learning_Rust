@@ -60,13 +60,38 @@ fn for_loop(){
         println!("{} : {}",pos,y);
     }
 }
+
+fn match_statement(){
+    let country_code = 4994;
+    /*
+    match is used to match a value with a given set of value.
+    if a statement is matched it comes out of match.
+    "_" is the default condition.
+    match can be used to match within a range of value as well
+    but we can not use ".." range operator. Insted we have 
+    to use "..=". this operator includes both the value
+    ie. 1..9 = 1,2,3,4,5,6,7,8
+    1..=9 = 1,2,3,4,5,6,7,8,9
+    */
+    let country = match country_code {
+        44 => "UK",
+        46 => "Sweden",
+        7 => "Russia",
+        1..=999 => "unknown",
+        _ => "invalid"
+    };
+    println!("the country code {} is {}", country_code, country);
+}
 fn main() {
     // if statement
    // if_statement();
 
    // while loop
    //while_and_loop();
-   
+
    // for loop
-   for_loop();
+  // for_loop();
+
+   // match
+   match_statement();
 }
