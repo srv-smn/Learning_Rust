@@ -38,10 +38,35 @@ fn while_and_loop(){
         if y == 1<<10 {break;}
     }
 }
+fn for_loop(){
+    // here x is variable which will be iterated 
+    // x value will start from 1 
+    // and go till 10 (11 is exlusive)
+    for x in 1..11 {
+        // continue also work as expected in for
+        if x == 3 {continue;}
+        // break also work as expected in for
+        if x == 8 {break;}
+
+        println!("x = {}", x);
+    }
+
+    // if we want to start from any number
+    // we also want the position of that 
+    // number in the range
+    // position will start from 0
+    for (pos,y) in (30..41).enumerate()
+    {
+        println!("{} : {}",pos,y);
+    }
+}
 fn main() {
     // if statement
    // if_statement();
 
    // while loop
-   while_and_loop();
+   //while_and_loop();
+   
+   // for loop
+   for_loop();
 }
