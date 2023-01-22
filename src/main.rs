@@ -76,9 +76,43 @@ fn unions(){
     let value = unsafe {iof.i};
     process_value(iof);
     process_value(IntOrFloat{f: 1.23});
+}
 
+// option
+/*
+Type Option represents an optional value: every Option is either Some and contains a value, or None
+It can have multiple uses like:
+Return values for functions that are not defined over their entire input range (partial functions)
+Return value for otherwise reporting simple errors, where None is returned on error
+
+A option type will have either "Some" value or "None" value
+*/
+
+fn option() {
+    let x = 3.0;
+    let y = 2.0;
+
+    // if valid value then Some else None
+
+    let result: Option<f64> = 
+        if y != 0.0 {Some(x/y)} else {None};
+
+    println!("{:?}", result);
+
+    // Some value can be utilised in multiple ways like
+
+    match result {
+        Some(z) => println!("{}/{} = {}",x,y,z),
+        None => println!("can not divide {} by {}",x,y)
+    }
+
+    // if let / while let
+    // The `if let` construct reads: "if `let` destructures `number` into
+    // `Some(i)`, evaluate the block (`{}`).
+    if let Some(z) = result {println!("z = {}",z);}
 
 }
+
 fn main() {
     //struct
    // structures();
@@ -87,5 +121,8 @@ fn main() {
    //enums();
 
    //union
-   unions();
+   //unions();
+
+   // option
+   option();
 }
