@@ -1,6 +1,6 @@
 #![allow(dead_code)]
 #![allow(unused_variables)]
-
+use std::mem;
 // struct
 struct Point {
     x: f64,
@@ -113,6 +113,56 @@ fn option() {
 
 }
 
+// arrays
+// we can not re-size an array
+// array can not be dynamic sized
+// the size of the index in array or vector "var_name[index]" is usize
+
+fn arrays() {
+    // [132;5] => [dataType: size]
+    let mut a:[i32;5] = [1,2,3,4,5];
+
+    println!("a has {} element, first is {}", a.len(), a[0]);
+    a[0] = 321;
+    println!("a[0] = {}", a[0]);
+
+    println!("{:?}",a);
+
+    if a == [321,2,3,4,5]{
+        println!("match");
+    }
+
+    let b = [1; 10];
+    // b is array of length 10 and all element is 1
+    // by default the datatype that b stores is i32 to in total b takes 40 bytes as len is 10
+    // but we can specify the datatype as let b:[i16: 10] = [1:10] or let b = [1i16:10];
+    for i in 0..b.len() {
+        println!("{}", b[i]);
+    }
+
+    // 2-D arrays
+     // let var_name = [[column_dataType;no_of_col], no_of_row]
+     let mtx:[[f32;3];2] = 
+        [
+            [1.0, 0.0, 0.0],
+            [0.0, 2.0, 0.0]
+        ];
+        println!("{:?}", mtx);
+
+        // iterating over loop
+         for i in 0..mtx.len()
+         {
+            for j in 0..mtx[0].len()
+            {
+                if i==j 
+                {
+                    println!("mtx[{}][{}] = {}",i,j,mtx[i][j]);
+                }
+            }
+         }
+
+}
+
 fn main() {
     //struct
    // structures();
@@ -124,5 +174,8 @@ fn main() {
    //unions();
 
    // option
-   option();
+   //option();
+
+   // arrays
+   arrays();
 }
