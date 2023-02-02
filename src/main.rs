@@ -162,7 +162,54 @@ fn arrays() {
          }
 
 }
+/*
+Declare dynamic data(change length at runtime).
+index of any data structure in rust is usize
+*/
+fn vectors() {
+    let mut a = Vec::new(); // making vector mutable to edit in future
+    a.push(1);
+    a.push(2); // adding value in vector
+    a.push(3);
 
+    println!("a = {:?}",a);
+    a.push(44);
+    println!("a = {:?}",a);
+
+    let mut idx:usize = 0;
+    a[idx] = 312;
+    println!("reading value at a[idx] = {}", a[idx]);
+
+    idx = 10;
+    // a[idx] = 312; this will throw error as idx is > total element
+    // so safe way to access value is get()
+    //get() returns either some or none
+
+    // option
+    match a.get(3)
+    {
+        Some(x) => println!("a[3] = {}",x),
+        None => println!("error, no such elemnt")
+    }
+
+    // iterating over vector
+    for x in &a {println!("{}",x);}
+
+    a.push(77);
+    println!("{:?}",a);
+
+    // pop() returns Option
+    let last_ele = a.pop(); // Some(77)
+    println!("last element is {:?}, a = {:?}",last_ele, a);
+
+    // printing vector in reverse
+    while let Some(x) = a.pop()
+    {
+        println!("{}",x);
+    }
+
+
+}
 fn main() {
     //struct
    // structures();
@@ -177,5 +224,8 @@ fn main() {
    //option();
 
    // arrays
-   arrays();
+   //arrays();
+
+   // vectors
+   vectors();
 }
