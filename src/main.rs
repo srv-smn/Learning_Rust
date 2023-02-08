@@ -342,6 +342,29 @@ fn tuples()
             }
         }
 
+    struct point<T>
+    {
+        x:T,
+        y:T
+    }
+
+    struct line<T>
+    {
+        start: point<T>,
+        end: point<T>
+    }
+
+    fn generics()
+    {
+        // generics are runtime defined datatypes
+        let a: point<f64> = point {x:0.0, y: 4f64};
+        let b = point{x:1.2, y:3.4};
+
+        let myLine = line{start:a, end:b};
+    
+    }
+
+
 
 fn main() {
     //struct
@@ -372,5 +395,8 @@ fn main() {
   //tuples();
 
   // pattern matching
-  pattern_matching();
+  //pattern_matching();
+
+  // generics
+  generics();
 }
