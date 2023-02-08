@@ -210,6 +210,77 @@ fn vectors() {
 
 
 }
+
+fn use_slice(slice: &mut[i32])
+{   
+    println!("first elem = {}, len = {}", slice[0], slice.len());
+    slice[0] = 4321;
+}
+
+fn slices(){
+    let mut data = [1,2,3,4,5];
+
+    use_slice(&mut data[1..4]); // data[1..4] = 2,3,4
+    //use_slice(&mut data);
+    println!("{:?}", data);
+}
+
+fn strings()
+{
+    // utf-8
+    let s: &'static str = "hello there";
+    /*
+    Here '&str' is string slice
+    static means the memory is allocated at compile time
+    */
+
+    // s = "abc"; assignment to this variable will give error
+    // let h = s[0]; array like manipulation is also not possible
+
+    // iterating over each character in string
+    for c in s.chars() // to access the character in reverse we can use s.chars().rev()
+    {
+        println!("{}",c); // we can print each character of the word
+    }
+
+    // accessing any particular character
+    if let Some(firsr_char) = s.chars().nth(0)
+    {
+        println!("first letter is {}", firsr_char);
+    }
+
+    // heap
+    // string
+
+    let mut letters = String::new();
+    let mut a = 'a' as u8;
+    while a<= ('z' as u8)
+        {
+            letters.push(a as char);// pass char
+            letters.push_str(","); // pass string
+            a +=1;
+        }
+        println!("{}", letters);
+
+        // some function might need String as input and
+        // some takes &str as input
+        // so we might need to convert &str to String and vice versa
+
+        // &str <> String
+        let u :&str= &letters;
+
+        // concatination
+        // there could be many combination of concatination
+        // String + str
+        //let z = letters + &letters;
+        
+        // converting str to string
+        let mut abc = "hello world".to_string();
+        abc.remove(0);
+        abc.push_str("!!!");
+        println!("{}",abc.replace("ello", "goodbye"));
+
+}
 fn main() {
     //struct
    // structures();
@@ -227,5 +298,11 @@ fn main() {
    //arrays();
 
    // vectors
-   vectors();
+  // vectors();
+
+  // slices
+  //slices();
+
+  // string
+  strings();
 }
