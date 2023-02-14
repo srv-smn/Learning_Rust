@@ -103,11 +103,42 @@ fn closures()
     plus_three(&mut f);
     println!("f = {}",f);
 }
+
+fn is_even(x: i32) -> bool
+{
+    x % 2 == 0
+}
+
+fn hof()
+{
+    let limit = 500;
+    let mut sum =0;
+    for i in 0..
+    {
+        let isq = i*i;
+        if isq > limit {break;}
+        else if is_even(isq) {sum += isq;}
+    }
+
+    println!("loop sum = {}", sum);
+
+    // the same above operation can be done using higher order function
+    // hof means you can pass functions as argument
+
+    let sum2 = (0..).map(|x| x*x) // created a range and itterating over it and doing their sq
+                                                .take_while(|&x| x <= limit) // checking if in limit
+                                                .filter(|x| is_even(*x))
+                                                .fold(0, |sum,x| sum+x);
+                    println!("hof sum = {}", sum2);
+}
 fn main() {
     //functions();
 
    // methods();
 
     // closure
-    closures();
+    //closures();
+
+    // higher order function
+    hof();
 }
